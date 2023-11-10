@@ -1,0 +1,19 @@
+id: xss-finder
+
+info:
+  name: xss finder
+  author: alcardox
+  severity: high
+
+http:
+  - method: GET
+    path: 
+      - "{{BaseURL}}?{{fuzz}}=ravix"
+
+    payloads:
+      fuzz: /home/r1cky/nuclei-templates/custom/tests.txt
+
+    matchers:
+      - type: word
+        words:
+          - "ravix"
